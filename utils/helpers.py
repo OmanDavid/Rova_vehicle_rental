@@ -75,6 +75,20 @@ def prompt_date(label):
         except ValueError:
             console.print("[yellow]Invalid date. Use YYYY-MM-DD format (e.g. 2025-08-01).[/yellow]")
 
+def prompt_choice(label, valid_choices):
+    """
+    Prompt the user to pick from a list of valid choices.
 
+    Args:
+        label (str): The prompt label.
+        valid_choices (list): List of acceptable string values.
 
-
+    Returns:
+        str: The validated choice in lowercase.
+    """
+    choices_str = ", ".join(valid_choices)
+    while True:
+        value = input(f"{label} ({choices_str}): ").strip().lower()
+        if value in valid_choices:
+            return value
+        console.print(f"[yellow]Choose from: {choices_str}[/yellow]")
