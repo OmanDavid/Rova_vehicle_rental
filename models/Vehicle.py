@@ -18,3 +18,11 @@ class Vehicle:
         rate_per_day,
         available=True,
     ):
+        self.id = id
+        self.make = make
+        self.model = model
+        self.year = year
+        self.plate = plate
+        self.vehicle_type = vehicle_type
+        self.rate_per_day = rate_per_day
+        self.available = available
