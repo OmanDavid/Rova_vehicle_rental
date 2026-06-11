@@ -18,3 +18,17 @@ class Booking:
         self.total_cost = self.first_pay + self.extra_pay
 
         self.status = status
+
+
+        self.booking_id = (
+            booking_id
+            if booking_id is not None
+            else Booking.booking_counter
+       
+        )
+
+        if self.booking_id is None:
+           Booking.booking_counter += 1
+
+        Booking.all_bookings.append(self)
+
