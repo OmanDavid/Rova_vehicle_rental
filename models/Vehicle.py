@@ -59,6 +59,11 @@ class Vehicle:
             "available": self.available,
         }
     
+    def save(self):
+        """
+        Save this vehicle to the JSON database.
+        """
+
     @classmethod
     def from_dict(cls, data):
         return cls(
