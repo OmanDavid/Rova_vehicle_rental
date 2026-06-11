@@ -24,3 +24,7 @@ class Vehicle:
         self.year = year
         self.price_per_day = price_per_day
         self.available = available
+
+    @property
+    def vehicle_id(self):
+        return self._vehicle_id
