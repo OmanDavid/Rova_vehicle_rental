@@ -43,3 +43,14 @@ class Vehicle:
     @property
     def vehicle_type(self):
         return self._vehicle_type
+    
+    @vehicle_type.setter
+    def vehicle_type(self, value):
+        value = value.lower()
+
+        if value not in VALID_TYPES:
+            raise ValueError(
+                f"Vehicle type must be one of: {', '.join(VALID_TYPES)}"
+            )
+
+        self._vehicle_type = value
