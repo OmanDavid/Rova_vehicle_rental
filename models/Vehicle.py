@@ -2,66 +2,32 @@ import uuid
 
 VALID_TYPES = ["car", "motorbike", "truck", "bus"]
 
-class Vehicle:
-    """
-    Represents a vehicle that can be listed for booking.
-    """
 
-    def __init__(
-        self,
-        id,
-        make,
-        model,
-        year,
-        plate,
-        vehicle_type,
-        rate_per_day,
-        available=True,
-    ):
+class Vehicle:
+    # Tracks how many vehicles have been created this session
+    count = 0
+
+    def __init__(self, id, make, model, year, plate, vehicle_type, rate_per_day, available=True):
         self.id = id
         self.make = make
         self.model = model
         self.year = year
         self.plate = plate
         self.vehicle_type = vehicle_type
-        self.rate_per_day = rate_per_day
-        self.available = available
+        self.rate_per_day = float(rate_per_day)
+        self._available = available
+        Vehicle.count += 1
 
+    # @property controls access to available — can only be set to True/False
     @property
-    def rate_per_day(self):
-        return self._rate_per_day
-    
-    @rate_per_day.setter
-    def rate_per_day(self, value):
-        value = float(value)
+    def available(self):
+        return self._available
 
-        if value < 0:
-            raise ValueError("Rate per day cannot be negative.")
-
-        self._rate_per_day = value
-
-    @property
-    def vehicle_type(self):
-        return self._vehicle_type
-    
-    @vehicle_type.setter
-    def vehicle_type(self, value):
-        value = value.lower()
-
-        if value not in VALID_TYPES:
-            raise ValueError(
-                f"Vehicle type must be one of: {', '.join(VALID_TYPES)}"
-            )
-
-        self._vehicle_type = value
-
-    def book(self):
-        """Mark vehicle as booked."""
-        self.available = False
-
-    def release(self):
-        """Mark vehicle as available."""
-        self.available = True
+    @available.setter
+    def available(self, value):
+        if not isinstance(value, bool):
+            raise ValueError("Available must be True or False.")
+        self._available = value
 
     def to_dict(self):
         return {
@@ -72,9 +38,9 @@ class Vehicle:
             "plate": self.plate,
             "vehicle_type": self.vehicle_type,
             "rate_per_day": self.rate_per_day,
-            "available": self.available,
+            "available": self._available,
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         return cls(
@@ -87,53 +53,28 @@ class Vehicle:
             rate_per_day=data["rate_per_day"],
             available=data.get("available", True),
         )
-    
+
     @classmethod
     def find_by_id(cls, vehicle_id, vehicles):
-        """
-        Find a vehicle by its ID.
-        """
-        for vehicle in vehicles:
-            if vehicle.id == vehicle_id:
-                return vehicle
+        for v in vehicles:
+            if v.id == vehicle_id:
+                return v
         return None
-    
+
     @classmethod
     def find_by_plate(cls, plate, vehicles):
-        """
-        Find a vehicle by its number plate.
-        """
-        for vehicle in vehicles:
-            if vehicle.plate.lower() == plate.lower():
-                return vehicle
+        for v in vehicles:
+            if v.plate.lower() == plate.lower():
+                return v
         return None
-    
+
     @staticmethod
     def generate_id():
-        """
-        Generate a short unique vehicle ID.
-        """
         return str(uuid.uuid4())[:8]
-    
+
     def __repr__(self):
-        return (
-            f"Vehicle(id={self.id!r}, "
-            f"make={self.make!r}, "
-            f"model={self.model!r})"
-        )
-    
+        status = "Available" if self._available else "Booked"
+        return f"[{self.vehicle_type.upper()}] {self.year} {self.make} {self.model} | {self.plate} | KES {self.rate_per_day}/day | {status}"
+
     def __str__(self):
-        status = "Available" if self.available else "Booked"
-
-        return (
-            f"[{self.id}] "
-            f"{self.year} "
-            f"{self.make} "
-            f"{self.model} | "
-            f"{self.vehicle_type} | "
-            f"KES {self.rate_per_day}/day | "
-            f"{status}"
-        )
-
-    
-
+        return self.__repr__()

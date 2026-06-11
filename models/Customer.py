@@ -1,8 +1,10 @@
+import uuid
+
 
 class Customer:
     count = 0
 
-    def _init_(self, id, name, email, phone):
+    def __init__(self, id, name, email, phone):
         self.id = id
         self.name = name
         self.email = email
@@ -44,8 +46,8 @@ class Customer:
     def generate_id():
         return str(uuid.uuid4())[:8]
 
-    def _repr_(self):
+    def __repr__(self):
         return f"Customer(id={self.id!r}, name={self.name!r}, email={self.email!r}, phone={self.phone!r})"
 
-    def _str_(self):
+    def __str__(self):
         return f"{self.name} | {self.email} | {self.phone}"

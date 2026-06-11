@@ -1,122 +1,48 @@
-import json
-import os
+"""
+sample_data.py — Seeds the database with vehicles, customers, and a default admin.
+Run once before using the app: python lib/sample_data.py
+"""
 
-from models.User import User
+import json, os, sys
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 from models.Vehicle import Vehicle
 from models.Customer import Customer
-from models.Booking import Booking
-from utils.auth import hash_password
+from utils.auth import seed_admin, register
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
-DATA_DIR = os.path.join(BASE_DIR, "data")
-
-USERS_FILE = os.path.join(DATA_DIR, "users.json")
-VEHICLES_FILE = os.path.join(DATA_DIR, "vehicle.json")
-CUSTOMERS_FILE = os.path.join(DATA_DIR, "customers.json")
-BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")
-
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 os.makedirs(DATA_DIR, exist_ok=True)
 
-def write_json(path, data):
-    with open(path, "w") as f:
-        json.dump(data, f, indent=4)
-
-# ------------------------------------------------------------------
-# Sample Users
-# ------------------------------------------------------------------
-
-users = [
-    User(
-        id=User.generate_id(),
-        username="admin",
-        password_hash=hash_password("admin123"),
-        role="admin",
-    ),
-    User(
-        id=User.generate_id(),
-        username="john",
-        password_hash=hash_password("password123"),
-        role="user",
-    ),
-]
-
-write_json(
-    USERS_FILE,
-    [user.to_dict() for user in users],
-)
-
-# ------------------------------------------------------------------
-# Sample Vehicles
-# ------------------------------------------------------------------
-
 vehicles = [
-    Vehicle(
-        id=Vehicle.generate_id(),
-        make="Toyota",
-        model="Corolla",
-        year=2022,
-        plate="KDA123A",
-        vehicle_type="car",
-        rate_per_day=3500,
-        available=True,
-    ),
-    Vehicle(
-        id=Vehicle.generate_id(),
-        make="Isuzu",
-        model="FRR",
-        year=2021,
-        plate="KDB456B",
-        vehicle_type="truck",
-        rate_per_day=9000,
-        available=True,
-    ),
-    Vehicle(
-        id=Vehicle.generate_id(),
-        make="Yamaha",
-        model="FZ",
-        year=2023,
-        plate="KMC789C",
-        vehicle_type="motorbike",
-        rate_per_day=1500,
-        available=True,
-    ),
-    Vehicle(
-        id=Vehicle.generate_id(),
-        make="Scania",
-        model="K360",
-        year=2020,
-        plate="KBT321D",
-        vehicle_type="bus",
-        rate_per_day=12000,
-        available=True,
-    ),
+    Vehicle(id="v001", make="Toyota", model="Hilux", year="2022", plate="KBC 001A", vehicle_type="truck", rate_per_day=8000),
+    Vehicle(id="v002", make="Kawasaki", model="Ninja", year="2023", plate="KBD 202B", vehicle_type="motorbike", rate_per_day=2500),
+    Vehicle(id="v003", make="Honda", model="Civic", year="2021", plate="KAA 555C", vehicle_type="car", rate_per_day=5000),
+    Vehicle(id="v004", make="Toyota", model="Coaster", year="2020", plate="KCA 100D", vehicle_type="bus", rate_per_day=15000),
+    Vehicle(id="v005", make="Subaru", model="Outback", year="2022", plate="KDB 303E", vehicle_type="car", rate_per_day=6500),
 ]
-
-write_json(
-    VEHICLES_FILE,
-    [vehicle.to_dict() for vehicle in vehicles],
-)
-
-# ------------------------------------------------------------------
-# Sample Customers
-# ------------------------------------------------------------------
 
 customers = [
-    Customer(
-        id=Customer.generate_id(),
-        name="Alice Wanjiku",
-        email="alice@example.com",
-        phone="0712345678",
-    ),
-    Customer(
-        id=Customer.generate_id(),
-        name="Brian Otieno",
-        email="brian@example.com",
-        phone="0723456789",
-    ),
+    Customer(id="c001", name="Alex Mwangi", email="alex@rova.co.ke", phone="0712345678"),
+    Customer(id="c002", name="Aisha Kamau", email="aisha@rova.co.ke", phone="0798765432"),
+    Customer(id="c003", name="Brian Otieno", email="brian@rova.co.ke", phone="0756789012"),
 ]
 
-write_json(
-    CUSTOMERS_FILE,
-    [customer.to_dict() for customer in customers],
-)
+with open(os.path.join(DATA_DIR, "vehicle.json"), "w") as f:
+    json.dump([v.to_dict() for v in vehicles], f, indent=4)
+
+with open(os.path.join(DATA_DIR, "customers.json"), "w") as f:
+    json.dump([c.to_dict() for c in customers], f, indent=4)
+
+with open(os.path.join(DATA_DIR, "bookings.json"), "w") as f:
+    json.dump([], f, indent=4)
+
+# Seed default admin + a regular user
+with open(os.path.join(DATA_DIR, "users.json"), "w") as f:
+    json.dump([], f, indent=4)
+
+seed_admin()
+register("john", "john123", role="user")
+
+print("✓ Sample data loaded.")
+print("  Admin login  → username: admin   password: admin123")
+print("  User login   → username: john    password: john123")

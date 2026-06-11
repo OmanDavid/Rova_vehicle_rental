@@ -3,6 +3,7 @@ from datetime import datetime
 
 DATE_FORMAT = "%Y-%m-%d"
 
+
 class Booking:
     count = 0
 
@@ -83,4 +84,3 @@ class Booking:
 
     def __str__(self):
         return self.__repr__()
-
