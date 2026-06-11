@@ -26,3 +26,7 @@ class Vehicle:
         self.vehicle_type = vehicle_type
         self.rate_per_day = rate_per_day
         self.available = available
+
+    @property
+    def rate_per_day(self):
+        return self._rate_per_day
