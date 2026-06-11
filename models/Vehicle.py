@@ -88,4 +88,14 @@ class Vehicle:
             available=data.get("available", True),
         )
     
+    @classmethod
+    def find_by_id(cls, vehicle_id, vehicles):
+        """
+        Find a vehicle by its ID.
+        """
+        for vehicle in vehicles:
+            if vehicle.id == vehicle_id:
+                return vehicle
+        return None
     
+
