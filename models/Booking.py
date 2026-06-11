@@ -80,3 +80,37 @@ class Booking:
             print(f"An error occurred: {e}")
 
 
+    @classmethod
+    def read_all(cls):
+        try:
+            with open(cls.FILE_PATH, "r") as f:
+                data = json.load(f)
+                cls.all_bookings.clear()
+
+            return [cls.from_dict(item) for item in data]
+
+        except FileNotFoundError:
+            return []
+
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            customer_name=data["customer_name"],
+            vehicle=data["vehicle"],
+            days=data["days"],
+            booking_id=data["booking_id"],
+            status=data.get("status", "active"),
+        )
+
+    @classmethod
+    def find_by_id(cls, booking_id):
+        bookings = cls.read_all()
+
+        for booking in bookings:
+            if booking.booking.id == booking_id:
+                return booking
+
+        return None
+
+
+
