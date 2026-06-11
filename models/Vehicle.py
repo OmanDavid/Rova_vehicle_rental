@@ -58,3 +58,7 @@ class Vehicle:
     def book(self):
         """Mark vehicle as booked."""
         self.available = False
+
+    def release(self):
+        """Mark vehicle as available."""
+        self.available = True
