@@ -108,4 +108,12 @@ class Vehicle:
                 return vehicle
         return None
     
+    @staticmethod
+    def generate_id():
+        """
+        Generate a short unique vehicle ID.
+        """
+        return str(uuid.uuid4())[:8]
+
+    
 
