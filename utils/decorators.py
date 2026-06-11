@@ -47,3 +47,18 @@ def require_login(func):
         return func(_current_user, *args, **kwargs)
     return wrapper
 
+def admin_only(func):
+    """
+    Decorator — blocks access if the current user is not an admin.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if _current_user is None:
+            console.print("[red]✗ You must be logged in to do that.[/red]")
+            return
+        if not _current_user.is_admin():
+            console.print("[red]✗ Admin access required.[/red]")
+            return
+        return func(_current_user, *args, **kwargs)
+    return wrapper
+
