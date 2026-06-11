@@ -23,8 +23,7 @@ class Booking:
         self.booking_id = (
             booking_id
             if booking_id is not None
-            else Booking.booking_counter
-       
+            else Booking.booking_counter 
         )
 
         if self.booking_id is None:
@@ -60,7 +59,6 @@ class Booking:
             "status": self.status,
         }
 
-
     def save_to_json(self):
         try:
             try:
@@ -78,7 +76,6 @@ class Booking:
 
         except Exception as e:
             print(f"An error occurred: {e}")
-
 
     @classmethod
     def read_all(cls):
@@ -111,6 +108,20 @@ class Booking:
                 return booking
 
         return None
+        
+    def __repr__(self):
+        return (
+            f"Booking("
+            f"booking_id={self.booking_id}"
+            f"customer={self.customer_name}, "
+            f"vehicle={self.vehicle}, "
+            f"days={self.days}" 
+            f"total_cost=KES {self.total_cost}, "
+            f"status={self.status})"
+        )
+
+    def __str__(self):
+        return self.__repr__()
 
 
 
