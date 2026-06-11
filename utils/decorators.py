@@ -62,3 +62,19 @@ def admin_only(func):
         return func(_current_user, *args, **kwargs)
     return wrapper
 
+def log_action(func):
+    """
+    Decorator — logs the name of every function call to the console.
+    Useful for debugging and audit trails.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        user = _current_user.username if _current_user else "guest"
+        console.print(f"[dim]› {user} called {func._name_}[/dim]")
+        return func(*args, **kwargs)
+    return wrapper
+
+
+
+
+
