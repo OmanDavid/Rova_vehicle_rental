@@ -54,3 +54,7 @@ class Vehicle:
             )
 
         self._vehicle_type = value
+
+    def book(self):
+        """Mark vehicle as booked."""
+        self.available = False
