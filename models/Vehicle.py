@@ -30,3 +30,12 @@ class Vehicle:
     @property
     def rate_per_day(self):
         return self._rate_per_day
+    
+    @rate_per_day.setter
+    def rate_per_day(self, value):
+        value = float(value)
+
+        if value < 0:
+            raise ValueError("Rate per day cannot be negative.")
+
+        self._rate_per_day = value
