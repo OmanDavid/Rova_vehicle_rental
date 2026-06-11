@@ -13,3 +13,14 @@ Usage:
 
 from functools import wraps
 from rich.console import Console
+
+console = Console()
+
+# Holds the currently logged-in user for this session
+_current_user = None
+
+
+def set_current_user(user):
+    """Set the active session user."""
+    global _current_user
+    _current_user = user
