@@ -2,23 +2,12 @@ import uuid
 
 VALID_TYPES = ["car", "motorbike", "truck", "bus"]
 
+
 class Vehicle:
-    """
-    Represents a vehicle that can be listed for booking.
-    """
+    # Tracks how many vehicles have been created this session
     count = 0
 
-    def __init__(
-        self,
-        id,
-        make,
-        model,
-        year,
-        plate,
-        vehicle_type,
-        rate_per_day,
-        available=True,
-    ):
+    def __init__(self, id, make, model, year, plate, vehicle_type, rate_per_day, available=True):
         self.id = id
         self.make = make
         self.model = model
@@ -29,10 +18,11 @@ class Vehicle:
         self._available = available
         Vehicle.count += 1
 
+    # @property controls access to available — can only be set to True/False
     @property
     def available(self):
         return self._available
-    
+
     @available.setter
     def available(self, value):
         if not isinstance(value, bool):
@@ -50,7 +40,7 @@ class Vehicle:
             "rate_per_day": self.rate_per_day,
             "available": self._available,
         }
-    
+
     @classmethod
     def from_dict(cls, data):
         return cls(
@@ -63,31 +53,28 @@ class Vehicle:
             rate_per_day=data["rate_per_day"],
             available=data.get("available", True),
         )
-    
+
     @classmethod
     def find_by_id(cls, vehicle_id, vehicles):
         for v in vehicles:
             if v.id == vehicle_id:
                 return v
         return None
-    
+
     @classmethod
     def find_by_plate(cls, plate, vehicles):
         for v in vehicles:
             if v.plate.lower() == plate.lower():
                 return v
         return None
-    
+
     @staticmethod
     def generate_id():
         return str(uuid.uuid4())[:8]
-    
-    def _repr_(self):
+
+    def __repr__(self):
         status = "Available" if self._available else "Booked"
         return f"[{self.vehicle_type.upper()}] {self.year} {self.make} {self.model} | {self.plate} | KES {self.rate_per_day}/day | {status}"
-        
-    
-    def __str__(self):
-        return self._repr_()
-    
 
+    def __str__(self):
+        return self.__repr__()

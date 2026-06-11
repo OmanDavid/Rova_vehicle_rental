@@ -1,3 +1,8 @@
+"""
+sample_data.py — Seeds the database with vehicles, customers, and a default admin.
+Run once before using the app: python lib/sample_data.py
+"""
+
 import json, os, sys
 sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
