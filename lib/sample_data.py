@@ -44,3 +44,55 @@ write_json(
     USERS_FILE,
     [user.to_dict() for user in users],
 )
+
+# ------------------------------------------------------------------
+# Sample Vehicles
+# ------------------------------------------------------------------
+
+vehicles = [
+    Vehicle(
+        id=Vehicle.generate_id(),
+        make="Toyota",
+        model="Corolla",
+        year=2022,
+        plate="KDA123A",
+        vehicle_type="car",
+        rate_per_day=3500,
+        available=True,
+    ),
+    Vehicle(
+        id=Vehicle.generate_id(),
+        make="Isuzu",
+        model="FRR",
+        year=2021,
+        plate="KDB456B",
+        vehicle_type="truck",
+        rate_per_day=9000,
+        available=True,
+    ),
+    Vehicle(
+        id=Vehicle.generate_id(),
+        make="Yamaha",
+        model="FZ",
+        year=2023,
+        plate="KMC789C",
+        vehicle_type="motorbike",
+        rate_per_day=1500,
+        available=True,
+    ),
+    Vehicle(
+        id=Vehicle.generate_id(),
+        make="Scania",
+        model="K360",
+        year=2020,
+        plate="KBT321D",
+        vehicle_type="bus",
+        rate_per_day=12000,
+        available=True,
+    ),
+]
+
+write_json(
+    VEHICLES_FILE,
+    [vehicle.to_dict() for vehicle in vehicles],
+)
