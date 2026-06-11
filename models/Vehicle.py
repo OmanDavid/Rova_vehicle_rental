@@ -121,6 +121,19 @@ class Vehicle:
             f"make={self.make!r}, "
             f"model={self.model!r})"
         )
+    
+    def __str__(self):
+        status = "Available" if self.available else "Booked"
+
+        return (
+            f"[{self.id}] "
+            f"{self.year} "
+            f"{self.make} "
+            f"{self.model} | "
+            f"{self.vehicle_type} | "
+            f"KES {self.rate_per_day}/day | "
+            f"{status}"
+        )
 
     
 
