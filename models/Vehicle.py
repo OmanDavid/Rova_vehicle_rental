@@ -39,3 +39,7 @@ class Vehicle:
             raise ValueError("Rate per day cannot be negative.")
 
         self._rate_per_day = value
+
+    @property
+    def vehicle_type(self):
+        return self._vehicle_type
