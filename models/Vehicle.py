@@ -46,3 +46,15 @@ class Vehicle:
     def release(self):
         """Marks the vehicle as available."""
         self.available = True
+
+    def to_dict(self):
+        return {
+            "vehicle_id": self.vehicle_id,
+            "owner": self.owner,
+            "category": self.category,
+            "brand": self.brand,
+            "model": self.model,
+            "year": self.year,
+            "price_per_day": self.price_per_day,
+            "available": self.available,
+        }
