@@ -20,3 +20,27 @@ os.makedirs(DATA_DIR, exist_ok=True)
 def write_json(path, data):
     with open(path, "w") as f:
         json.dump(data, f, indent=4)
+
+# ------------------------------------------------------------------
+# Sample Users
+# ------------------------------------------------------------------
+
+users = [
+    User(
+        id=User.generate_id(),
+        username="admin",
+        password_hash=hash_password("admin123"),
+        role="admin",
+    ),
+    User(
+        id=User.generate_id(),
+        username="john",
+        password_hash=hash_password("password123"),
+        role="user",
+    ),
+]
+
+write_json(
+    USERS_FILE,
+    [user.to_dict() for user in users],
+)
