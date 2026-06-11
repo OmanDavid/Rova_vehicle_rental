@@ -12,7 +12,7 @@ Usage:
 """
 
 from functools import wraps
-from rich.console import Console
+from rich.console import Console # type: ignore
 
 console = Console()
 
