@@ -58,3 +58,16 @@ class Vehicle:
             "price_per_day": self.price_per_day,
             "available": self.available,
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            owner=data["owner"],
+            category=data["category"],
+            brand=data["brand"],
+            model=data["model"],
+            year=data["year"],
+            price_per_day=data["price_per_day"],
+            available=data.get("available", True),
+            vehicle_id=data["vehicle_id"],
+        )
