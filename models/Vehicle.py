@@ -71,3 +71,14 @@ class Vehicle:
             available=data.get("available", True),
             vehicle_id=data["vehicle_id"],
         )
+    
+    def __str__(self):
+        status = "Available" if self.available else "Booked"
+
+        return (
+            f"[{self.vehicle_id}] "
+            f"{self.year} {self.brand} {self.model} | "
+            f"{self.category} | "
+            f"KSh {self.price_per_day}/day | "
+            f"{status}"
+        )
