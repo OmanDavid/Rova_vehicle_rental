@@ -16,3 +16,11 @@ class Vehicle:
         available=True,
         vehicle_id=None,
     ):
+        self._vehicle_id = vehicle_id or str(uuid.uuid4())[:8]
+        self.owner = owner
+        self.category = category
+        self.brand = brand
+        self.model = model
+        self.year = year
+        self.price_per_day = price_per_day
+        self.available = available
