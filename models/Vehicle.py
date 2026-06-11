@@ -28,3 +28,7 @@ class Vehicle:
     @property
     def vehicle_id(self):
         return self._vehicle_id
+    
+    @property
+    def price_per_day(self):
+        return self._price_per_day
