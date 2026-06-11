@@ -12,7 +12,7 @@ from utils.helpers import prompt, prompt_float, prompt_int, prompt_date, prompt_
 
 console = Console()
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(_file_)), "data")
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
 VEHICLES_FILE = os.path.join(DATA_DIR, "vehicle.json")
 CUSTOMERS_FILE = os.path.join(DATA_DIR, "customers.json")
 BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")
