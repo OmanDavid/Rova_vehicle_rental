@@ -16,3 +16,7 @@ CUSTOMERS_FILE = os.path.join(DATA_DIR, "customers.json")
 BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")
 
 os.makedirs(DATA_DIR, exist_ok=True)
+
+def write_json(path, data):
+    with open(path, "w") as f:
+        json.dump(data, f, indent=4)
