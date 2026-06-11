@@ -1,10 +1,3 @@
-"""
-functions.py — All CLI action functions for Rova.
-Each function maps to a menu option in main.py.
-Admin-only actions are protected with @admin_only.
-All booking actions require @require_login.
-"""
-
 import json
 import os
 from rich.console import Console
@@ -19,7 +12,7 @@ from utils.helpers import prompt, prompt_float, prompt_int, prompt_date, prompt_
 
 console = Console()
 
-DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(__file__)), "data")
+DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(_file_)), "data")
 VEHICLES_FILE = os.path.join(DATA_DIR, "vehicle.json")
 CUSTOMERS_FILE = os.path.join(DATA_DIR, "customers.json")
 BOOKINGS_FILE = os.path.join(DATA_DIR, "bookings.json")

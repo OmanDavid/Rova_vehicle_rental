@@ -1,14 +1,14 @@
 [
     {
-        "id": "33c41909",
+        "id": "5a56cb7f",
         "username": "admin",
-        "password_hash": "$2b$12$V3G0PBwqMDtHrSNeo2I.ve7omGHEflxJQdLXcJCK6lYrEQ181u4wy",
+        "password_hash": "$2b$12$/EN9/jGkMRmvo4XSKcuFmOA7H1IcDCoHw9yOOvwamt.JFivuGMBme",
         "role": "admin"
     },
     {
-        "id": "70823383",
-        "username": "testuser",
-        "password_hash": "$2b$12$qpYYKvM8rFeobTOtMxtnL.oVUtfActdj04/0fq4AY0Zw9PmElGFNG",
+        "id": "0f7f5e80",
+        "username": "john",
+        "password_hash": "$2b$12$RdfgsypF9JEMVF1QWgwOP.G23qe2LyE1Xxbb28Z1viVDAaqPqoYJK",
         "role": "user"
     }
 ]

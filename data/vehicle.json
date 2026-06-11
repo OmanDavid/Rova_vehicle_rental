@@ -1,0 +1,72 @@
+[
+    {
+        "id": "v001",
+        "make": "Toyota",
+        "model": "Hilux",
+        "year": "2022",
+        "plate": "KBC 001A",
+        "vehicle_type": "truck",
+        "rate_per_day": 8000.0,
+        "available": true
+    },
+    {
+        "id": "v002",
+        "make": "Kawasaki",
+        "model": "Ninja",
+        "year": "2023",
+        "plate": "KBD 202B",
+        "vehicle_type": "motorbike",
+        "rate_per_day": 2500.0,
+        "available": true
+    },
+    {
+        "id": "v003",
+        "make": "Honda",
+        "model": "Civic",
+        "year": "2021",
+        "plate": "KAA 555C",
+        "vehicle_type": "car",
+        "rate_per_day": 5000.0,
+        "available": true
+    },
+    {
+        "id": "v004",
+        "make": "Toyota",
+        "model": "Coaster",
+        "year": "2020",
+        "plate": "KCA 100D",
+        "vehicle_type": "bus",
+        "rate_per_day": 15000.0,
+        "available": true
+    },
+    {
+        "id": "v005",
+        "make": "Subaru",
+        "model": "Outback",
+        "year": "2022",
+        "plate": "KDB 303E",
+        "vehicle_type": "car",
+        "rate_per_day": 6500.0,
+        "available": true
+    },
+    {
+        "id": "80693ed2",
+        "make": "BMW",
+        "model": "song",
+        "year": "2023",
+        "plate": "001A",
+        "vehicle_type": "car",
+        "rate_per_day": 10000.0,
+        "available": true
+    },
+    {
+        "id": "5c31ea0a",
+        "make": "9",
+        "model": "lsk",
+        "year": "flksd",
+        "plate": "sfdlkj",
+        "vehicle_type": "car",
+        "rate_per_day": 2498.0,
+        "available": true
+    }
+]
