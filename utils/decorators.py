@@ -70,7 +70,7 @@ def log_action(func):
     @wraps(func)
     def wrapper(*args, **kwargs):
         user = _current_user.username if _current_user else "guest"
-        console.print(f"[dim]› {user} called {func._name_}[/dim]")
+        console.print(f"[dim]› {user} called {func.__name__}[/dim]")
         return func(*args, **kwargs)
     return wrapper
 

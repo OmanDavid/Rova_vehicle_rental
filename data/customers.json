@@ -1,0 +1,20 @@
+[
+    {
+        "id": "c001",
+        "name": "Alex Mwangi",
+        "email": "alex@rova.co.ke",
+        "phone": "0712345678"
+    },
+    {
+        "id": "c002",
+        "name": "Aisha Kamau",
+        "email": "aisha@rova.co.ke",
+        "phone": "0798765432"
+    },
+    {
+        "id": "c003",
+        "name": "Brian Otieno",
+        "email": "brian@rova.co.ke",
+        "phone": "0756789012"
+    }
+]

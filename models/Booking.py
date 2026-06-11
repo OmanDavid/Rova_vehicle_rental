@@ -3,7 +3,6 @@ from datetime import datetime
 
 DATE_FORMAT = "%Y-%m-%d"
 
-
 class Booking:
     count = 0
 
