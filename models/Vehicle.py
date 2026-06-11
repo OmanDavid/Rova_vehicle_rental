@@ -74,3 +74,18 @@ class Vehicle:
             "rate_per_day": self.rate_per_day,
             "available": self.available,
         }
+    
+    @classmethod
+    def from_dict(cls, data):
+        return cls(
+            id=data["id"],
+            make=data["make"],
+            model=data["model"],
+            year=data["year"],
+            plate=data["plate"],
+            vehicle_type=data["vehicle_type"],
+            rate_per_day=data["rate_per_day"],
+            available=data.get("available", True),
+        )
+    
+    
