@@ -32,3 +32,9 @@ class Vehicle:
     @property
     def price_per_day(self):
         return self._price_per_day
+    
+    @price_per_day.setter
+    def price_per_day(self, value):
+        if value < 0:
+            raise ValueError("Price per day cannot be negative.")
+        self._price_per_day = value
