@@ -32,3 +32,31 @@ class Booking:
 
         Booking.all_bookings.append(self)
 
+# Status validation
+    @property
+    def status(self):
+        return self._status
+
+    @status.setter
+    def status(self, value):
+        if value not in ["active", "cancelled"]:
+            raise ValueError(
+                "Booking status must be 'active' or 'cancelled'."
+            )
+        self._status = value
+
+    def cancel(self):
+        self.status = "cancelled"
+
+    def to_dict(self):
+        return {
+            "booking_id": self.booking_id,
+            "customer_name": self.customer_name,
+            "vehicle": self.vehicle,
+            "days" : self.days,
+            "first_pay": self.first_pay,
+            "extra_pay": self.extra_pay,
+            "total_cost": self.total_cost,
+            "status": self.status,
+        }
+
