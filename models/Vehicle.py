@@ -98,4 +98,14 @@ class Vehicle:
                 return vehicle
         return None
     
+    @classmethod
+    def find_by_plate(cls, plate, vehicles):
+        """
+        Find a vehicle by its number plate.
+        """
+        for vehicle in vehicles:
+            if vehicle.plate.lower() == plate.lower():
+                return vehicle
+        return None
+    
 
