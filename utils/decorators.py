@@ -33,3 +33,17 @@ def logout():
     """Clear the session user."""
     global _current_user
     _current_user = None
+
+def require_login(func):
+    """
+    Decorator — blocks access if no user is logged in.
+    Passes the current user as the first argument to the wrapped function.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if _current_user is None:
+            console.print("[red]✗ You must be logged in to do that.[/red]")
+            return
+        return func(_current_user, *args, **kwargs)
+    return wrapper
+
