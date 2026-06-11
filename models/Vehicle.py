@@ -38,3 +38,7 @@ class Vehicle:
         if value < 0:
             raise ValueError("Price per day cannot be negative.")
         self._price_per_day = value
+
+    def book(self):
+        """Marks the vehicle as unavailable."""
+        self.available = False
