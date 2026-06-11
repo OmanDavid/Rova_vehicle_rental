@@ -60,3 +60,23 @@ class Booking:
             "status": self.status,
         }
 
+
+    def save_to_json(self):
+        try:
+            try:
+                with open(self.FILE_PATH, "r") as f:
+                    data = json.load(f)
+            except (FileNotFoundError, json.JSONDecodeError):
+                data = []
+
+            data.append(self.to_dict())
+
+            with open(self.FILE_PATH, "w") as f:
+                json.dump(data, f, indent=4)
+
+            print(f"{self.booking_id} saved successfully.")
+
+        except Exception as e:
+            print(f"An error occurred: {e}")
+
+
