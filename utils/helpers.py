@@ -1,17 +1,24 @@
-import re
+from datetime import datetime
+from rich.console import Console
 
-def validate_username(username):
-    if not username.strip():
-        return False, "Incorrect username, try again!"
-    return True, ""
-    
-def validate_password(password_hashed):
-    if len(password_hashed) < 5:
-        return False, "Password must be more than 5 characters long"
-    return True, ""
-  
-def validate_vehicle(vehicle):
-    if vehicle.strip():
-        raise TypeError("Vehicle invalid.")
-    
-    
+console = Console()
+DATE_FORMAT = "%Y-%m-%d"
+
+
+def prompt(label, required=True):
+    """
+    Prompt the user for input.
+
+    Args:
+        label (str): The prompt label shown to the user.
+        required (bool): If True, re-prompts until non-empty input is given.
+
+    Returns:
+        str: The user's input stripped of whitespace.
+    """
+    while True:
+        value = input(f"{label}: ").strip()
+        if value or not required:
+            return value
+        console.print("[yellow]This field is required.[/yellow]")
+
