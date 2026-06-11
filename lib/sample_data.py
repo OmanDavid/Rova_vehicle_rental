@@ -96,3 +96,27 @@ write_json(
     VEHICLES_FILE,
     [vehicle.to_dict() for vehicle in vehicles],
 )
+
+# ------------------------------------------------------------------
+# Sample Customers
+# ------------------------------------------------------------------
+
+customers = [
+    Customer(
+        id=Customer.generate_id(),
+        name="Alice Wanjiku",
+        email="alice@example.com",
+        phone="0712345678",
+    ),
+    Customer(
+        id=Customer.generate_id(),
+        name="Brian Otieno",
+        email="brian@example.com",
+        phone="0723456789",
+    ),
+]
+
+write_json(
+    CUSTOMERS_FILE,
+    [customer.to_dict() for customer in customers],
+)
