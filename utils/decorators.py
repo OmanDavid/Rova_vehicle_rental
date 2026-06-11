@@ -24,3 +24,7 @@ def set_current_user(user):
     """Set the active session user."""
     global _current_user
     _current_user = user
+
+def get_current_user():
+    """Get the active session user."""
+    return _current_user
