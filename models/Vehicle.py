@@ -114,6 +114,13 @@ class Vehicle:
         Generate a short unique vehicle ID.
         """
         return str(uuid.uuid4())[:8]
+    
+    def __repr__(self):
+        return (
+            f"Vehicle(id={self.id!r}, "
+            f"make={self.make!r}, "
+            f"model={self.model!r})"
+        )
 
     
 
