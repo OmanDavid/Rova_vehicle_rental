@@ -65,6 +65,12 @@ class Vehicle:
         """
 
     @classmethod
+    def load_all(cls):
+        """
+        Return all Vehicle objects.
+        """
+
+    @classmethod
     def from_dict(cls, data):
         return cls(
             owner=data["owner"],
