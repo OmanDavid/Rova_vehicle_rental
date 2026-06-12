@@ -10,5 +10,23 @@
         "username": "john",
         "password_hash": "$2b$12$RdfgsypF9JEMVF1QWgwOP.G23qe2LyE1Xxbb28Z1viVDAaqPqoYJK",
         "role": "user"
+    },
+    {
+        "id": "916f297d",
+        "username": "Oman",
+        "password_hash": "$2b$12$Ck94JehaLYpRf.QntNNrSecuJWqXj85hlklF5AZHS18.JPlUiOhES",
+        "role": "admin"
+    },
+    {
+        "id": "e6cbff6e",
+        "username": "david",
+        "password_hash": "$2b$12$fcDGRAmeHTsCUcmpGIRG9.KREFs4jipkX5aUG.SDfhNb51lVHA6wS",
+        "role": "user"
+    },
+    {
+        "id": "da4167f4",
+        "username": "stanley",
+        "password_hash": "$2b$12$tVbIXa.hVyWwNtqRSK7oEOLMEXhLkM0II8q0bf9PUOUtdZHVvmVEG",
+        "role": "user"
     }
 ]

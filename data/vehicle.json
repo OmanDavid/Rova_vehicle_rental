@@ -37,7 +37,7 @@
         "plate": "KCA 100D",
         "vehicle_type": "bus",
         "rate_per_day": 15000.0,
-        "available": true
+        "available": false
     },
     {
         "id": "v005",
@@ -47,7 +47,7 @@
         "plate": "KDB 303E",
         "vehicle_type": "car",
         "rate_per_day": 6500.0,
-        "available": true
+        "available": false
     },
     {
         "id": "80693ed2",
