@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "id": "97707b87",
+        "customer_id": "c001",
+        "vehicle_id": "v004",
+        "start_date": "2026-06-13",
+        "end_date": "2026-06-18",
+        "total_cost": 75000.0,
+        "status": "active"
+    },
+    {
+        "id": "f7efd4cd",
+        "customer_id": "c001",
+        "vehicle_id": "v005",
+        "start_date": "2026-06-13",
+        "end_date": "2026-06-15",
+        "total_cost": 13000.0,
+        "status": "active"
+    }
+]
