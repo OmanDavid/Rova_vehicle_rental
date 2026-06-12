@@ -28,5 +28,11 @@
         "username": "stanley",
         "password_hash": "$2b$12$tVbIXa.hVyWwNtqRSK7oEOLMEXhLkM0II8q0bf9PUOUtdZHVvmVEG",
         "role": "user"
+    },
+    {
+        "id": "2eb63093",
+        "username": "jaccop",
+        "password_hash": "$2b$12$9CvKfHn2Ymm5DcK7XzTl9.rkl3MHZfYcu9hur2qR9ZWS.2.1RMePa",
+        "role": "user"
     }
 ]
