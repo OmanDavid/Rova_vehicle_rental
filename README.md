@@ -1,34 +1,36 @@
 # Rova — Vehicle Rental Management System
 
-A command-line vehicle rental management tool built with Python OOP, interactive menus, and role-based authentication.
+A command-line vehicle rental management tool built with Python. Manage vehicles, customers, and bookings from the terminal with role-based authentication.
 
 ---
 
 ## Setup
 
 ### 1. Clone the repo
-
 ```bash
 git clone https://github.com/OmanDavid/Rova_vehicle_rental.git
 cd Rova_vehicle_rental
 ```
 
-### 2. Install dependencies
+### 2. Create and activate virtual environment
+```bash
+python -m venv venv
+source venv/bin/activate
+```
 
+### 3. Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Seed sample data
-
+### 4. Seed sample data (first time only)
 ```bash
 python lib/sample_data.py
 ```
 
-### 4. Run the app
-
+### 5. Run the app
 ```bash
-python main.py
+python main.py <command>
 ```
 
 ---
@@ -42,39 +44,47 @@ python main.py
 
 ---
 
-## CLI Flow
+## Commands
 
-```
-===== ROVA VEHICLE RENTAL MANAGEMENT =====
+Every command asks for your username and password first, then runs the action.
 
-1. Login
-2. Register
-3. Exit
+```bash
+# See all available commands
+python main.py --help
 
-Choice: 1
-Username: admin
-Password: admin123
-✓ Welcome back, admin!
+# Register a new user account
+python main.py register
 
---- Vehicles ---
-1. Add Vehicle
-2. View Vehicles
-3. Search Vehicle
+# Vehicles
+python main.py add-vehicle
+python main.py list-vehicles
+python main.py list-vehicles --type car
+python main.py search-vehicle
 
---- Customers ---
-4. Add Customer
-5. View Customers
+# Customers
+python main.py add-customer
+python main.py list-customers
 
---- Bookings ---
-6. Create Booking
-7. View Bookings
-8. Cancel Booking
-
-9. Logout
-0. Exit
+# Bookings
+python main.py create-booking
+python main.py list-bookings
+python main.py cancel-booking
 ```
 
-Regular users (role: user) only see: View Vehicles, Search Vehicle, Create Booking, View Bookings.
+---
+
+## Access Control
+
+| Command | Who can use it |
+|---|---|
+| `add-vehicle` | Admin only |
+| `list-vehicles` | Everyone |
+| `search-vehicle` | Everyone |
+| `add-customer` | Admin only |
+| `list-customers` | Everyone |
+| `create-booking` | Must be logged in |
+| `list-bookings` | Must be logged in |
+| `cancel-booking` | Admin only |
 
 ---
 
@@ -82,19 +92,19 @@ Regular users (role: user) only see: View Vehicles, Search Vehicle, Create Booki
 
 ```
 Rova_vehicle_rental/
-├── main.py                  # Interactive menu loop + auth flow
+├── main.py                  # CLI entry point (argparse)
 ├── models/
 │   ├── Vehicle.py           # Vehicle class (@property on available)
 │   ├── Customer.py          # Customer class
 │   ├── Booking.py           # Booking class (@property on status)
 │   └── User.py              # Auth user class (@property on role)
 ├── lib/
-│   ├── functions.py         # All CLI actions (decorated with @require_login / @admin_only)
+│   ├── functions.py         # All CLI action functions
 │   └── sample_data.py       # Seeds database with test data
 ├── utils/
 │   ├── auth.py              # Registration, login, bcrypt password hashing
 │   ├── decorators.py        # @require_login, @admin_only, @log_action
-│   └── helpers.py           # Input validation helpers (prompt, prompt_date, etc.)
+│   └── helpers.py           # Input validation helpers
 ├── data/
 │   ├── vehicle.json
 │   ├── customers.json
@@ -109,7 +119,6 @@ Rova_vehicle_rental/
 ---
 
 ## Running Tests
-
 ```bash
 python -m pytest tests/ -v
 ```
@@ -117,17 +126,19 @@ python -m pytest tests/ -v
 ---
 
 ## Features
-
-- Interactive numbered menu (no commands to memorize)
-- User registration and login with bcrypt password hashing
-- Role-based access: Admin vs User
-- Admins can add vehicles, manage customers, cancel bookings
-- Users can view vehicles, search, and create bookings
+- argparse subcommands for all actions
+- Login required before every command
+- Role-based access — Admin vs User
+- Add and list vehicles filtered by type (car, motorbike, truck, bus)
+- Register customers with duplicate email detection
+- Create bookings with automatic cost calculation
 - Availability guard — can't double-book a vehicle
-- Auto cost calculation from date range × daily rate
+- Cancel bookings — vehicle automatically freed up
 - All data persisted in JSON files
-- Rich color-coded tables
+- Rich color-coded tables in the terminal
 - 30 unit tests
+
+---
 
 ## External Packages
 
@@ -137,7 +148,14 @@ python -m pytest tests/ -v
 | `bcrypt`| Secure password hashing |
 | `pytest`| Unit testing |
 
-## Known Issues
+---
 
-- No password change feature yet
-- Booking overlap detection not yet implemented (same vehicle, overlapping dates)
+## Known Issues
+- No booking overlap detection yet
+- No password change feature
+- Sessions don't persist — login required for every command
+
+---
+
+## Authors
+Built as a Moringa School Python group summative lab.
